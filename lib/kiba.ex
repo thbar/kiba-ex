@@ -35,6 +35,14 @@ defmodule Kiba do
         @sources
       end
       
+      def transforms do
+        @transforms
+      end
+      
+      def destinations do
+        @destinations
+      end
+      
       def run do
         Enum.each @sources, fn source ->
           klass = Keyword.fetch!(source, :klass)
