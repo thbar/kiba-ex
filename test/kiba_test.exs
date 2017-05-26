@@ -1,8 +1,11 @@
 defmodule KibaTest do
   use ExUnit.Case
-  doctest Kiba
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "source declaration" do
+    defmodule SimpleETL do
+      use Kiba
+      source EnumerableSource, (1..10)
+    end
+    assert [klass: EnumerableSource, options: (1..10)] == Enum.at(SimpleETL.sources, 0)
   end
 end
